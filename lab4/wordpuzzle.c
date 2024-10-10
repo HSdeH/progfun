@@ -1,6 +1,6 @@
-/* file   :     template.c                               */
+/* file   :     wordpuzzle.c                             */
 /* author :     Rik de Hoop (H.S.de.Hoop@student.rug.nl) */
-/* date   :     Tue Oct 1 2024                           */
+/* date   :     Mon Oct 7 2024                           */
 /* version:     1.0                                      */
 
 /* Description:
@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
   char word[21];
   char invert[20];
   int length = 0;
-  // initialize word
+  // initialize word[]
   for (int i = 0; i < 21; i++) {
     word[i] = '\0';
   }
@@ -128,7 +128,7 @@ int main(int argc, char *argv[]) {
       invert[i - 1] = word[length - i];
     }
     // check if the word can be found in 4 directions, if it cant, invert and
-    // check again, this is the same as checking all 4 directions
+    // check again, this is the same as checking all 8 directions
     if (!findInPuzzle(n, word, puzzle, length)) {
       findInPuzzle(n, invert, puzzle, length);
     }
