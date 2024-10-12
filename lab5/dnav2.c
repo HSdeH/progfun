@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int findPattern(int *genome, int *pattern);
+int findPattern(char *, char *, int *);
 
 int main(int argc, char **argv) {
   int e, matches = 0, shift = 0;
@@ -35,6 +35,16 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-int findPattern(int *genome, int *pattern) {
-
+// if 0, no pattern was found, if 1 a pattern was found and shift gets set to
+// its index
+int findPattern(char *genome, char *pattern, int *shift) {
+  // if (strlen(pattern) > strlen(genome)) {
+  //   return 0;
+  // }
+  char *shiftPointer = strstr(genome, pattern);
+  if (shiftPointer == NULL) {
+    return 0;
+  }
+  *shift = (shiftPointer - genome);
+  return 1;
 }
