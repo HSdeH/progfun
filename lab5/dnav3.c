@@ -14,8 +14,6 @@
 #define BUFFER_LENGTH 1000000
 
 int findPattern(char *, char *, int *);
-int findPattern2(char *, char *, int *);
-int findPattern3(char *, char *, int *);
 
 int main(int argc, char **argv) {
   int n, matches = 0, shift = 0, found = 0;
@@ -32,17 +30,6 @@ int main(int argc, char **argv) {
     fgets(buffer, BUFFER_LENGTH, stdin);
     name = strtok(buffer, ":");
     genome = strtok(NULL, "\n");
-    // int iterator = 0;
-    // while ((scanf("%c", &buffer[iterator]) == 1) &&
-    //        (buffer[iterator] != '\n')) {
-    //   if (buffer[iterator] == ':') {
-    //     buffer[iterator] = '\0';
-    //     genome = &buffer[iterator + 1];
-    //   }
-    //   iterator++;
-    // }
-    // buffer[iterator] = '\0';
-
     if (findPattern(genome, pattern, &shift)) {
       printf("%s: shift=%d\n", name, shift);
       matches++;
