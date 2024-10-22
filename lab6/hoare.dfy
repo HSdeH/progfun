@@ -35,17 +35,17 @@ ensures x == y*y + X && y == Y
   // these comment lines.
 
   // the following annotated program fragment shows the correctness of the Hoare triple:
-  //   {x == y*y + X && y + 1 == Y} y:= ??; x := ??; {x == y*y + X && y == Y}
+  //   {x == y*y + X && y + 1 == Y} y:= y + 1; x := x + 2*y -1; {x == y*y + X && y == Y}
 
   assert x == y*y + X && y + 1 == Y;
   // the following assertion should be a simplification of the next assertion
-  assert ??;
-  // the following assertion should be wp(x:=..., y:=....;, x == y*y + X && y == Y);
-  assert ??; 
-  y := ...;  // fill in an appropriate expression
+  assert x + 2*y + 1 == y*y + 2*y + 1 + X && y + 1 == Y;
+  // the following assertion should be wp(x:= x + 2*y - 1, y:= y + 1;, x == y*y + X && y == Y);
+  assert x + 2*(y + 1) - 1 == (y+1)*(y+1) + X && (y + 1) == Y; 
+  y := y + 1;  // fill in an appropriate expression
   // the following assertion should be wp(x:=..., x == y*y + X && y == Y);
-  assert x??;
-  x := ...;  // fill in an appropriate expression
+  assert x + 2*y - 1 == y*y + X && y == Y;
+  x := x + 2*y - 1;  // fill in an appropriate expression
   assert x == y*y + X && y == Y;
 }
 

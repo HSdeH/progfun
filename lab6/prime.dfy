@@ -25,6 +25,10 @@ method isRightTruncPrime(n: int) returns (r: bool)
 {
   var a := n;
   var b : bool;
+  if a < 1
+  {
+    return false;
+  }
   while a > 0 
   {
     b := isPrime(a);
